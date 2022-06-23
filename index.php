@@ -2,12 +2,21 @@
 <link rel="shortcut icon" href="favicon.ico?v1" type="image/x-icon" />
 <head>
 	<title>Play Defend.io!</title>
-	<meta name="description" content="Conquer as many castles as you can. Defend your castles. Play with other gamers. Become the most guarded player. Made by Infiputer!!" />
-<meta http-equiv='content-language' content='en-gb'>
+	<meta name="description" content="Defend.io is a multiplayer game. Conquer castes and shoot enemies. Defend your castles from getting stolen. Play Defend.io!" />
+	<meta property="og:type" content="website">
+	
+	<meta property="image" content="https://defendio.herokuapp.com/images/defendiocover.png">
+	<meta property="og:image" content="https://defendio.herokuapp.com/images/defendiocover.png">
+
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://defend.infiputer.repl.co/">
+	<meta property="og:title" content="Play Defend.io!">
+	<meta property="og:description" content="Play Defend.io with me!">
 </head>
+
+<body background = "https://defendio.herokuapp.com/images/defendiocover.png">
 <link rel="stylesheet" type="text/css" href="index.css" media="screen" />
-<img src = "http://defendio.herokuapp.com/images/castle.svg" id = "img1" alt="castle">
-<img src = "http://defendio.herokuapp.com/images/castle.svg" id = "img2" alt="castle">
+
 <center>
 <h1 id = "title">Defend.io</h1>
 <form action="play.php" method="get">
@@ -25,7 +34,7 @@
 		<b>Defend</b> your castles
 	</div>
 </p>
-
+<h1><tt><a href = "http://defendio.herokuapp.com/">Offical version</a><br></tt></h1>
 <tt><a href="privacy.php">Privacy Policy</a></tt>
 </center>
 <script>
@@ -54,5 +63,6 @@
 	setInterval(changeTip, 5000);
 </script>
 <?php
-exec("curl 'http://defendws.herokuapp.com/'");
+//exec("curl 'http://defendws.herokuapp.com/'");
 ?>
+</body>
