@@ -97,18 +97,19 @@ function createPlayers(){
 				mathmap(play["y"]-playerY, height/maxLen*-1000, height/maxLen*1000, 0, height)
 			]
 
-			rect(
-				arrowpos[0],
-				arrowpos[1],
-				30, 30, "black"
-			)
+			// rect(
+			// 	arrowpos[0],
+			// 	arrowpos[1],
+			// 	30, 30, "black"
+			// )
 			
-			rect(
-				arrowpos[0],
-				arrowpos[1],
-				20, 20, "brown"
-			)
-			
+			// rect(
+			// 	arrowpos[0],
+			// 	arrowpos[1],
+			// 	20, 20, "brown"
+			// )
+			circle(arrowpos[0], arrowpos[1], 15, "black");
+			circle(arrowpos[0], arrowpos[1], 10, "brown");
 
 		}
 		else if(play["type"]=="castle"){
