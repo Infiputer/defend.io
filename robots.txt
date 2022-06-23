@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: https://defendio.herokuapp.com/privacy.php
+Disallow: http://defendio.herokuapp.com/play.php
+Sitemap: http://defendio.herokuapp.com/sitemap.xml
