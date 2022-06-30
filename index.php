@@ -5,11 +5,11 @@
 	<meta name="description" content="Defend.io is a multiplayer game. Conquer castes and shoot enemies. Defend your castles from getting stolen. Play Defend.io!" />
 	<meta property="og:type" content="website">
 	
-	<meta property="image" content="http://defend.infiputer.repl.co/images/defendiocover.png">
-	<meta property="og:image" content="http://defend.infiputer.repl.co/images/defendiocover.png">
+	<meta property="image" content="https://defendio.herokuapp.com/images/defendiocover.png">
+	<meta property="og:image" content="https://defendio.herokuapp.com/images/defendiocover.png">
 
 	<meta property="og:type" content="website">
-	<meta property="og:url" content="https://defend.infiputer.repl.co/">
+	<meta property="og:url" content="https://defendio.herokuapp.com/">
 	<meta property="og:title" content="Play Defend.io!">
 	<meta property="og:description" content="Play Defend.io with me!">
 </head>
@@ -34,7 +34,7 @@
 		<b>Defend</b> your castles
 	</div>
 </p>
-<h1><tt><a href = "http://defendio.herokuapp.com/">Offical version</a><br></tt></h1>
+<h1><tt><a href = "https://defendio.herokuapp.com/">Offical version</a><br></tt></h1>
 <tt><a href="privacy.php">Privacy Policy</a></tt>
 </center>
 <script>

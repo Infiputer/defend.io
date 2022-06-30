@@ -1,7 +1,7 @@
 <?php
-	// $name = $_GET["n"];
-	// $event = "sponsor: ".$_GET["n"].":".$_SERVER['HTTP_X_FORWARDED_FOR'];
-	// exec('curl "https://logger.infiputer.repl.co/api/logwrite.php?user=anishpatil@infiputer.com&pass=YC9GiX&log=defendio&event='.urlencode($event).'"');
+	$name = $_GET["n"];
+	$event = "sponsor: ".$_GET["n"].":".$_SERVER['HTTP_X_FORWARDED_FOR'];
+	exec('curl "https://logger.infiputer.repl.co/api/logwrite.php?user=anishpatil@infiputer.com&pass=YC9GiX&log=defendio&event='.urlencode($event).'"');
 ?>
 <title>Play Defend!</title>
 <link rel="stylesheet" type="text/css" href="index.css" media="screen" />

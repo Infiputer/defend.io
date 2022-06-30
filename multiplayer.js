@@ -1,5 +1,5 @@
 
-let socket = new WebSocket("wss://defendWS.infiputer.repl.co");
+let socket = new WebSocket("wss://defendiows.herokuapp.com/");
 
 lose = false;
 
@@ -168,7 +168,7 @@ socket.onmessage = function(event) {
 	if(event.data == "lose"){
 		lose=true
 		document.body.innerHTML = "You lost :("
-		window.location = 'https://defend.infiputer.repl.co/lost.html' 
+		window.location = 'https://defendio.herokuapp.com/lost.html' 
 		console.log("lost")
 		
 	}
