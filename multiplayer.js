@@ -1,5 +1,5 @@
 
-let socket = new WebSocket("wss://defendiows.herokuapp.com/");
+let socket = new WebSocket("wss://defendws.herokuapp.com/");
 
 lose = false;
 
