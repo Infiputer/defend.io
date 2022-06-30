@@ -13,6 +13,24 @@
     -ms-user-select: none;
     user-select: none;
 	}
+	#chatwrapper{
+		z-index: 9;
+		position:absolute;
+		right: 100px;
+		font-family: consolas;
+		-webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+		border-style: ridge;
+		background: white;
+	}
+	#chat{
+		position: absoulute;
+		
+	}
 	#myCanvas{
 		-webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -24,6 +42,10 @@
 </style>
 <body onkeypress="keypress(event)" onkeydown="keypress(event)">
 <div id = "leaderboard"></div>
+<div id = "chatwrapper">
+	<div id = "chat">Chat</div>
+	<input onChange="sendMsg(this.value);" id = "chatinput">
+</div>
 <canvas id="myCanvas" onclick = "canvas_click()" style="border:1px solid #d3d3d3;"></canvas>
 
 

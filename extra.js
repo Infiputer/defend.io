@@ -1,4 +1,7 @@
 var c = document.getElementById("myCanvas");
+var chat = document.getElementById("chat");
+
+allmsgs = [];
 
 var grass = new Image();
 grass.src = 'images/grass.png';
@@ -19,12 +22,6 @@ function setSize() {
 setSize()
 var ctx = c.getContext("2d");
 
-
-
-function shakeScreen(){
-	
-}
-
 function keypress(event) {
   key = event.keyCode;
 	keymap[event.keyCode] = event.type == 'keydown';
@@ -33,6 +30,10 @@ function keypress(event) {
 			delete keymap[k2];
 		}
 	}
+}
+
+function constrain(val, min_val, max_val){
+    return Math.min(max_val, Math.max(min_val, val))
 }
 
 function mathmap(x, in_min, in_max, out_min, out_max) {
@@ -44,11 +45,13 @@ document.addEventListener('keyup', keypress);
 setTimeout(function(){
 	console.log(" ▄▄▄▄▄▄▄▄▄▄   ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄        ▄  ▄▄▄▄▄▄▄▄▄▄      ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄           \n▐░░░░░░░░░░▌ ▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░▌      ▐░▌▐░░░░░░░░░░▌    ▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌          \n▐░█▀▀▀▀▀▀▀█░▌▐░█▀▀▀▀▀▀▀▀▀ ▐░█▀▀▀▀▀▀▀▀▀ ▐░█▀▀▀▀▀▀▀▀▀ ▐░▌░▌     ▐░▌▐░█▀▀▀▀▀▀▀█░▌    ▀▀▀▀█░█▀▀▀▀ ▐░█▀▀▀▀▀▀▀█░▌          \n▐░▌       ▐░▌▐░▌          ▐░▌          ▐░▌          ▐░▌▐░▌    ▐░▌▐░▌       ▐░▌        ▐░▌     ▐░▌       ▐░▌          \n▐░▌       ▐░▌▐░█▄▄▄▄▄▄▄▄▄ ▐░█▄▄▄▄▄▄▄▄▄ ▐░█▄▄▄▄▄▄▄▄▄ ▐░▌ ▐░▌   ▐░▌▐░▌       ▐░▌        ▐░▌     ▐░▌       ▐░▌          \n▐░▌       ▐░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░▌  ▐░▌  ▐░▌▐░▌       ▐░▌        ▐░▌     ▐░▌       ▐░▌          \n▐░▌       ▐░▌▐░█▀▀▀▀▀▀▀▀▀ ▐░█▀▀▀▀▀▀▀▀▀ ▐░█▀▀▀▀▀▀▀▀▀ ▐░▌   ▐░▌ ▐░▌▐░▌       ▐░▌        ▐░▌     ▐░▌       ▐░▌          \n▐░▌       ▐░▌▐░▌          ▐░▌          ▐░▌          ▐░▌    ▐░▌▐░▌▐░▌       ▐░▌        ▐░▌     ▐░▌       ▐░▌          \n▐░█▄▄▄▄▄▄▄█░▌▐░█▄▄▄▄▄▄▄▄▄ ▐░▌          ▐░█▄▄▄▄▄▄▄▄▄ ▐░▌     ▐░▐░▌▐░█▄▄▄▄▄▄▄█░▌ ▄  ▄▄▄▄█░█▄▄▄▄ ▐░█▄▄▄▄▄▄▄█░▌          \n▐░░░░░░░░░░▌ ▐░░░░░░░░░░░▌▐░▌          ▐░░░░░░░░░░░▌▐░▌      ▐░░▌▐░░░░░░░░░░▌ ▐░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌          \n ▀▀▀▀▀▀▀▀▀▀   ▀▀▀▀▀▀▀▀▀▀▀  ▀            ▀▀▀▀▀▀▀▀▀▀▀  ▀        ▀▀  ▀▀▀▀▀▀▀▀▀▀   ▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀           \n                                                                                                                     \n ▄▄▄▄▄▄▄▄▄▄   ▄         ▄                                                                                            \n▐░░░░░░░░░░▌ ▐░▌       ▐░▌                                                                                           \n▐░█▀▀▀▀▀▀▀█░▌▐░▌       ▐░▌                                                                                           \n▐░▌       ▐░▌▐░▌       ▐░▌                                                                                           \n▐░█▄▄▄▄▄▄▄█░▌▐░█▄▄▄▄▄▄▄█░▌                                                                                           \n▐░░░░░░░░░░▌ ▐░░░░░░░░░░░▌                                                                                           \n▐░█▀▀▀▀▀▀▀█░▌ ▀▀▀▀█░█▀▀▀▀                                                                                            \n▐░▌       ▐░▌     ▐░▌                                                                                                \n▐░█▄▄▄▄▄▄▄█░▌     ▐░▌                                                                                                \n▐░░░░░░░░░░▌      ▐░▌                                                                                                \n ▀▀▀▀▀▀▀▀▀▀        ▀                                                                                                 \n                                                                                                                     \n ▄▄▄▄▄▄▄▄▄▄▄  ▄▄        ▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄         ▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄ \n▐░░░░░░░░░░░▌▐░░▌      ▐░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░▌       ▐░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌\n ▀▀▀▀█░█▀▀▀▀ ▐░▌░▌     ▐░▌▐░█▀▀▀▀▀▀▀▀▀  ▀▀▀▀█░█▀▀▀▀ ▐░█▀▀▀▀▀▀▀█░▌▐░▌       ▐░▌ ▀▀▀▀█░█▀▀▀▀ ▐░█▀▀▀▀▀▀▀▀▀ ▐░█▀▀▀▀▀▀▀█░▌\n     ▐░▌     ▐░▌▐░▌    ▐░▌▐░▌               ▐░▌     ▐░▌       ▐░▌▐░▌       ▐░▌     ▐░▌     ▐░▌          ▐░▌       ▐░▌\n     ▐░▌     ▐░▌ ▐░▌   ▐░▌▐░█▄▄▄▄▄▄▄▄▄      ▐░▌     ▐░█▄▄▄▄▄▄▄█░▌▐░▌       ▐░▌     ▐░▌     ▐░█▄▄▄▄▄▄▄▄▄ ▐░█▄▄▄▄▄▄▄█░▌\n     ▐░▌     ▐░▌  ▐░▌  ▐░▌▐░░░░░░░░░░░▌     ▐░▌     ▐░░░░░░░░░░░▌▐░▌       ▐░▌     ▐░▌     ▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌\n     ▐░▌     ▐░▌   ▐░▌ ▐░▌▐░█▀▀▀▀▀▀▀▀▀      ▐░▌     ▐░█▀▀▀▀▀▀▀▀▀ ▐░▌       ▐░▌     ▐░▌     ▐░█▀▀▀▀▀▀▀▀▀ ▐░█▀▀▀▀█░█▀▀ \n     ▐░▌     ▐░▌    ▐░▌▐░▌▐░▌               ▐░▌     ▐░▌          ▐░▌       ▐░▌     ▐░▌     ▐░▌          ▐░▌     ▐░▌  \n ▄▄▄▄█░█▄▄▄▄ ▐░▌     ▐░▐░▌▐░▌           ▄▄▄▄█░█▄▄▄▄ ▐░▌          ▐░█▄▄▄▄▄▄▄█░▌     ▐░▌     ▐░█▄▄▄▄▄▄▄▄▄ ▐░▌      ▐░▌ \n▐░░░░░░░░░░░▌▐░▌      ▐░░▌▐░▌          ▐░░░░░░░░░░░▌▐░▌          ▐░░░░░░░░░░░▌     ▐░▌     ▐░░░░░░░░░░░▌▐░▌       ▐░▌\n ▀▀▀▀▀▀▀▀▀▀▀  ▀        ▀▀  ▀            ▀▀▀▀▀▀▀▀▀▀▀  ▀            ▀▀▀▀▀▀▀▀▀▀▀       ▀       ▀▀▀▀▀▀▀▀▀▀▀  ▀         ▀ ")
 }, 500)
-
+sounddict = {};
 function playSound(filename){
-	let playsoundfile = new Audio('/sounds/'+filename);
-	playsoundfile.play();
+	soundeffectAudio = new Audio('/sounds/'+filename);
+	soundeffectAudio.play();
 }
+
+playSound("rickroll.mp3");
 
 let interval;
 
@@ -111,4 +114,19 @@ function circle(x, y, radius, color){
 function rect(x, y, height, width, color) {
 		ctx.fillStyle = color;
 		ctx.fillRect((x - width / 2), (y - height / 2), width, height)
+}
+shake1=-1;
+shake2=-1;
+function shakeScreen(){
+	clearInterval(shake1);
+	clearInterval(shake2);
+    shake1 = setInterval(function(){
+			document.getElementById("myCanvas").style.transform="rotateZ("+0.1+"deg)";
+		}, 100)
+    setTimeout(function(){
+        shake2 = setInterval(function(){
+					document.getElementById("myCanvas").style.transform="rotateZ("+(-0.1)+"deg)";
+				}, 100)
+    }, 50);
+    setTimeout(function(){clearInterval(shake1); clearInterval(shake2); document.getElementById("myCanvas").style.transform="rotateZ(0deg)";}, 200);
 }

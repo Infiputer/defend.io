@@ -5,8 +5,8 @@
 	<meta name="description" content="Defend.io is a multiplayer game. Conquer castes and shoot enemies. Defend your castles from getting stolen. Play Defend.io!" />
 	<meta property="og:type" content="website">
 	
-	<meta property="image" content="https://defendio.herokuapp.com/images/defendiocover.png">
-	<meta property="og:image" content="https://defendio.herokuapp.com/images/defendiocover.png">
+	<meta property="image" content="http://defend.infiputer.repl.co/images/defendiocover.png">
+	<meta property="og:image" content="http://defend.infiputer.repl.co/images/defendiocover.png">
 
 	<meta property="og:type" content="website">
 	<meta property="og:url" content="https://defend.infiputer.repl.co/">
@@ -14,7 +14,7 @@
 	<meta property="og:description" content="Play Defend.io with me!">
 </head>
 
-<body background = "https://defendio.herokuapp.com/images/defendiocover.png">
+<body background = "images/defendiocover.png">
 <link rel="stylesheet" type="text/css" href="index.css" media="screen" />
 
 <center>
@@ -63,6 +63,6 @@
 	setInterval(changeTip, 5000);
 </script>
 <?php
-//exec("curl 'http://defendws.herokuapp.com/'");
+exec("curl 'http://defendws.herokuapp.com/'");
 ?>
 </body>

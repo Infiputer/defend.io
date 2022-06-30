@@ -15,7 +15,7 @@ input{
 #tips{
 	font-size: 40px;
 	transform: rotateZ(20deg);
-	
+	color: orange;
 }
 #title{
 	font-size: 80px;
@@ -32,4 +32,8 @@ input{
 	right: 5%;
 	position: absolute;
 	top: 20%;
+}
+body{
+	background-repeat:no-repeat;
+	background-size: 100% 100%;
 }

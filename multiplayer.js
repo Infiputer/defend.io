@@ -1,4 +1,5 @@
-let socket = new WebSocket("wss://defendws.herokuapp.com/");
+
+let socket = new WebSocket("wss://defendWS.infiputer.repl.co");
 
 lose = false;
 
@@ -8,18 +9,27 @@ isconnected=false;
 players = []
 
 socket.onopen = function(e) {
+	isconnected=true;
   console.log("[open] Connection established");
   socket.send("name "+myname);
 };
 
 function createPlayers(){
 	ctx.clearRect(0, 0, width, height)
-	for(xgrass=-10000;xgrass<10000;xgrass+=500){
-		for(ygrass=-10000;ygrass<10000;ygrass+=500){
+	for(xgrass=-6000;xgrass<6000;xgrass+=500){
+		for(ygrass=-6000;ygrass<6000;ygrass+=500){
 			ctx.drawImage(grass, xgrass-playerX+width/2, ygrass-playerY+height/2);
 		}
 	}
-
+  ctx.lineWidth = "600";
+  ctx.strokeStyle = "red";
+  ctx.strokeRect(
+		(-5250)-playerX+width/2,
+		(-5250)-playerY+height/2,
+		10500, 10500
+	)
+	ctx.strokeStyle = "black";
+	ctx.lineWidth = "10";
 	objects.forEach(function(play){
 		//console.log(play["type"])
 		if(play["type"]=="player"){
@@ -158,7 +168,7 @@ socket.onmessage = function(event) {
 	if(event.data == "lose"){
 		lose=true
 		document.body.innerHTML = "You lost :("
-		window.location = 'http://defendio.herokuapp.com/lost.html' 
+		window.location = 'https://defend.infiputer.repl.co/lost.html' 
 		console.log("lost")
 		
 	}
@@ -173,8 +183,24 @@ socket.onmessage = function(event) {
 	else if(event.data.startsWith("sound ")){
 		playSound(event.data.split(" ")[1])
 	}
+	else if(event.data.startsWith("chat ")){
+		chatmsg = "";
+		for(msgindex in event.data.split(" ")){
+			if(msgindex!=0){
+				chatmsg+=event.data.split(" ")[msgindex]+' ';
+			}
+		}
+		console.log(chatmsg)
+		allmsgs.push(chatmsg);
+		if(allmsgs.length>5){
+			allmsgs.shift();
+		}
+		chat.innerText="";
+		for(msg in allmsgs){
+			chat.innerText+=allmsgs[msg]+"\n";
+		}
+	}
 	else{
-		isconnected = true;
 		objects = JSON.parse(event.data)
 		createPlayers()
 	}
@@ -195,3 +221,8 @@ function moveMe(myX, myY, myAngle){
 	}
 }
 
+function sendMsg(m){
+	socket.send("chat "+m);
+	document.getElementById("chatinput").value="";
+	console.log(m)
+}

@@ -49,6 +49,7 @@ function launchArrow(){
 		socket.send(
 			"arrow "+(playerX+Math.cos(direction)*100)+","+(playerY+Math.sin(direction)*100)+","+direction
 		)
+		shakeScreen();
 		canshoot = false
 		shootangle+=0.05
 		setTimeout(function(){
@@ -78,7 +79,8 @@ function checkkeys(){
 		playerX+=speed;
 		hasMoved = true;
 	}
-
+	playerX=constrain(playerX, -5000, 5000);
+	playerY=constrain(playerY, -5000, 5000);
 }
 function canvas_click(){
 	event.preventDefault();
