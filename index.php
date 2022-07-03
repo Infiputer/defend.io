@@ -2,7 +2,7 @@
 <link rel="shortcut icon" href="favicon.ico?v1" type="image/x-icon" />
 <head>
 	<title>Play Defend.io!</title>
-	<meta name="description" content="Defend.io is a multiplayer game. Conquer castes and shoot enemies. Defend your castles from getting stolen. Play Defend.io!" />
+	<meta name="description" content="Defend.io is a multiplayer game. Conquer castes and shoot enemies. Defend your castles from getting stolen. Play Defend.io! Made by Infiputer!!" />
 	<meta property="og:type" content="website">
 	
 	<meta property="image" content="https://defendio.herokuapp.com/images/defendiocover.png">
