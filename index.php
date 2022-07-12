@@ -42,7 +42,8 @@
 		"WASD to move",
 		"Click to shoot",
 		"Find castles",
-		"Conquer as many castles as possible",
+		"Conquer castles",
+		"Walls stop bullets",
 		"Made by Infiputer"
 	]
 	tipnum = Math.floor(Math.random()*tips.length);
