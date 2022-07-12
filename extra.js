@@ -12,14 +12,18 @@ castleimg.src = 'images/castle.svg';
 var playerimg = new Image();
 playerimg.src = 'images/player.svg';
 
+var wallimg = new Image();
+wallimg.src = 'images/wall.svg';
 
 function setSize() {
-		c.width = window.innerWidth - 20;
-		c.height = window.innerHeight - 30;
-		width = window.innerWidth - 20;
-		height = window.innerHeight - 30;
+	c.width = window.innerWidth - 20;
+	c.height = window.innerHeight - 30;
+	width = window.innerWidth - 20;
+	height = window.innerHeight - 30;
+	maxLen = Math.max(width, height);
 }
 setSize()
+window.onresize=setSize;
 var ctx = c.getContext("2d");
 
 function keypress(event) {
