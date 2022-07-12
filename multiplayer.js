@@ -1,6 +1,8 @@
 
 let socket = new WebSocket("wss://defendws.herokuapp.com/");
 
+id = "";
+
 lose = false;
 
 isconnected=false;
@@ -38,7 +40,10 @@ function createPlayers(){
 				mathmap(play["y"]-playerY, height/maxLen*-1000, height/maxLen*1000, 0, height)
 			]
 
-
+			if(play["id"]==id){
+				playerpos[0]=width/2;
+				playerpos[1]=height/2;//force yourself at the center
+			}
 			ctx.lineWidth = 3;
 			ctx.beginPath();
 			ctx.moveTo(playerpos[0]+26, playerpos[1]-75);
@@ -106,21 +111,8 @@ function createPlayers(){
 				mathmap(play["x"]-playerX, width/maxLen*-1000, width/maxLen*1000, 0, width), 
 				mathmap(play["y"]-playerY, height/maxLen*-1000, height/maxLen*1000, 0, height)
 			]
-
-			// rect(
-			// 	arrowpos[0],
-			// 	arrowpos[1],
-			// 	30, 30, "black"
-			// )
-			
-			// rect(
-			// 	arrowpos[0],
-			// 	arrowpos[1],
-			// 	20, 20, "brown"
-			// )
 			circle(arrowpos[0], arrowpos[1], 15, "black");
 			circle(arrowpos[0], arrowpos[1], 10, "brown");
-
 		}
 		else if(play["type"]=="castle"){
 			castlepos = [
@@ -160,6 +152,18 @@ function createPlayers(){
 			ctx.font = '10px san-serif';
     	ctx.fillText(play["ownername"], castlepos[0],castlepos[1]+100);
 		}
+		else if(play["type"]=="wall"){
+			wallpos = [
+				mathmap(play["x"]-playerX, width/maxLen*-1000, width/maxLen*1000, 0, width), 
+				mathmap(play["y"]-playerY, height/maxLen*-1000, height/maxLen*1000, 0, height)
+			]
+			ctx.drawImage(wallimg,
+							wallpos[0]-wallimg.width/3,
+							wallpos[1]-wallimg.height/3, 
+							wallimg.width,
+							wallimg.height
+			);
+		}
 	})
 }
 
@@ -168,7 +172,7 @@ socket.onmessage = function(event) {
 	if(event.data == "lose"){
 		lose=true
 		document.body.innerHTML = "You lost :("
-		window.location = 'https://defendio.herokuapp.com/lost.html' 
+		window.location = 'https://defend.infiputer.repl.co/lost.html' 
 		console.log("lost")
 		
 	}
@@ -178,7 +182,7 @@ socket.onmessage = function(event) {
 		document.getElementById("leaderboard").innerText = JSON.stringify(leaderboard, null, '\t')
 	}
 	else if(event.data.startsWith("id")){
-		//do nothing there is no use 
+		id=event.data.split(" ")[1];
 	}
 	else if(event.data.startsWith("sound ")){
 		playSound(event.data.split(" ")[1])
