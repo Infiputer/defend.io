@@ -172,7 +172,7 @@ socket.onmessage = function(event) {
 	if(event.data == "lose"){
 		lose=true
 		document.body.innerHTML = "You lost :("
-		window.location = 'https://defend.infiputer.repl.co/lost.html' 
+		window.location = 'http://defendio.herokuapp.com/lost.html' 
 		console.log("lost")
 		
 	}
