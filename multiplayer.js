@@ -163,6 +163,18 @@ function createPlayers(){
 							wallimg.width,
 							wallimg.height
 			);
+			healthbar = mathmap(play["health"], 0, 100, 0, 70)
+			
+			rect(
+				wallpos[0]+4,
+				wallpos[1]-40,
+				25, 75,
+				"black"
+			)
+
+			ctx.rect(wallpos[0]-31,wallpos[1]-50, healthbar, 20);
+			ctx.fillStyle = "green"
+			ctx.fill()
 		}
 	})
 }
@@ -224,7 +236,12 @@ function moveMe(myX, myY, myAngle){
 		setTimeout(function(){cansend=true},100)
 	}
 }
-
+function makeWall(){
+	if(canMakeWall){
+		socket.send("wall "+direction);
+		setTimeout(function(){canMakeWall=true}, 1000)
+	}
+}
 function sendMsg(m){
 	socket.send("chat "+m);
 	document.getElementById("chatinput").value="";

@@ -2,6 +2,8 @@ Hours_Wasted_On_This_Useless_Project=Infinity
 playerX = 0
 playerY = 0
 
+money = 100;
+
 var keymap = {}
 hasMoved=true
 learderboard = {}
@@ -15,7 +17,7 @@ shootangle = 0
 
 direction = 0
 
-speed = 5
+speed = 1
 
 maxLen = Math.max(width, height)
 
@@ -31,7 +33,7 @@ setInterval(function(){
 		hasMoved=false
 		moveMe(playerX, playerY, direction)
 	}
-}, 100)
+}, 50)
 
 document.addEventListener("mousemove", () => {
   mouseX = event.clientX; 
@@ -60,9 +62,12 @@ function launchArrow(){
 
 
 
-speed = 2;
+speed = 1;
+canMakeWall = true;
 function checkkeys(){
-	//console.log(keymap)
+	if(kdown(69)){
+		makeWall();
+	}
 	if(kdown(38) || kdown(87)){
 		playerY-=speed;
 		hasMoved = true;
