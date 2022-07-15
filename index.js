@@ -62,7 +62,6 @@ function launchArrow(){
 
 
 
-speed = 1;
 canMakeWall = true;
 function checkkeys(){
 	if(kdown(69)){
