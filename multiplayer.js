@@ -41,7 +41,7 @@ function createPlayers(){
 			]
 
 			if(play["id"]==id){
-				if(getDistance(play["x"], play["y"], playerX, playerY)>100){//On connection drop don't movex
+				if(getDistance(play["x"], play["y"], playerX, playerY)>300){//On connection drop don't movex
 					playerX=play["x"];
 					playerY=play["y"];
 				}
