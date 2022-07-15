@@ -17,7 +17,7 @@ shootangle = 0
 
 direction = 0
 
-speed = 1
+speed = 2
 
 maxLen = Math.max(width, height)
 
