@@ -41,8 +41,14 @@ function createPlayers(){
 			]
 
 			if(play["id"]==id){
-				playerpos[0]=width/2;
-				playerpos[1]=height/2;//force yourself at the center
+				if(getDistance(play["x"], play["y"], playerX, playerY)>100){//On connection drop don't movex
+					playerX=play["x"];
+					playerY=play["y"];
+				}
+				else{
+					playerpos[0]=width/2;
+					playerpos[1]=height/2;//force yourself at the center
+				}
 			}
 			ctx.lineWidth = 3;
 			ctx.beginPath();
@@ -188,7 +194,11 @@ socket.onmessage = function(event) {
 		console.log("lost")
 		
 	}
-
+	else if(event.data.startsWith("move")){ // backend can force player to move to a position
+		backendPos=event.data.split(" ")[1].split(",");
+		playerX=parseInt(backendPos[0]);
+		playerY=parseInt(backendPos[1]);
+	}
 	else if(event.data.startsWith("leader")){
 		leaderboard = JSON.parse(event.data.substring(6))
 		document.getElementById("leaderboard").innerText = JSON.stringify(leaderboard, null, '\t')
