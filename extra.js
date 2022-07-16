@@ -55,7 +55,6 @@ function playSound(filename){
 	soundeffectAudio.play();
 }
 
-playSound("rickroll.mp3");
 
 let interval;
 
