@@ -120,6 +120,17 @@ function createPlayers(){
 			circle(arrowpos[0], arrowpos[1], 15, "black");
 			circle(arrowpos[0], arrowpos[1], 10, "brown");
 		}
+		else if(play["type"]=="tree"){
+			treepos = [
+				mathmap(play["x"]-playerX, width/maxLen*-1000, width/maxLen*1000, 0, width), 
+				mathmap(play["y"]-playerY, height/maxLen*-1000, height/maxLen*1000, 0, height)
+			]
+			ctx.drawImage(treeimg,
+							(treepos[0])-treeimg.width/2,
+							(treepos[1])-treeimg.height/2, 
+							treeimg.width,
+							treeimg.height);
+		}
 		else if(play["type"]=="castle"){
 			castlepos = [
 				mathmap(play["x"]-playerX, width/maxLen*-1000, width/maxLen*1000, 0, width), 

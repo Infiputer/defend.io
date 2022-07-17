@@ -15,6 +15,9 @@ playerimg.src = 'images/player.svg';
 var wallimg = new Image();
 wallimg.src = 'images/wall.svg';
 
+var treeimg = new Image();
+treeimg.src = 'images/tree.svg';
+
 function setSize() {
 	c.width = window.innerWidth - 20;
 	c.height = window.innerHeight - 30;
