@@ -8,7 +8,7 @@
 <marquee>
 	<h1>
 		<tt>
-			<a href = "https://defend.infiputer.repl.co/">Play defend.io</a>
+			<a href = "http://defendio.herokuapp.com/">Play defend.io</a>
 		</tt>
 	</h1>
 
