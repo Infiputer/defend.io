@@ -1,5 +1,8 @@
 <link rel="icon" href="favicon.ico?v1" type="image/x-icon" />
 <link rel="shortcut icon" href="favicon.ico?v1" type="image/x-icon" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300&display=swap" rel="stylesheet">
 <head>
 	<title>Play Defend.io!</title>
 	<meta name="description" content="Defend.io is a multiplayer game. Conquer castes and shoot enemies. Defend your castles from getting stolen. Play Defend.io! Made by Infiputer!!" />
