@@ -45,3 +45,11 @@ body{
 #info{
 	font-size: 50px;
 }
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: cyan; 
+  border-radius: 10px;
+}
