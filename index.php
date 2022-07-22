@@ -12,7 +12,7 @@
 	<meta property="og:image" content="https://defendio.herokuapp.com/images/defendiocover.png">
 
 	<meta property="og:type" content="website">
-	<meta property="og:url" content="https://defendio.herokuapp.com/">
+	<meta property="og:url" content="https://defendio.herokuapp.com">
 	<meta property="og:title" content="Play Defend.io!">
 	<meta property="og:description" content="Play Defend.io with me!">
 </head>
@@ -37,7 +37,7 @@
 		<b>Defend</b> your castles
 	</div>
 </p>
-<h1><tt><a href = "https://defendio.herokuapp.com/">Offical version</a><br></tt></h1>
+<h1><tt><a href = "http://defendio.herokuapp.com/">Offical version</a><br></tt></h1>
 <tt><a href="privacy.php">Privacy Policy</a></tt>
 </center>
 <script>
@@ -45,7 +45,7 @@
 		"WASD to move",
 		"Click to shoot",
 		"Find castles",
-		"Conquer castles",
+		"Conquer as many castles as possible",
 		"Walls stop bullets",
 		"Made by Infiputer"
 	]
@@ -67,6 +67,17 @@
 	changeTip();
 	setInterval(changeTip, 5000);
 </script>
+
+<div id = "help">
+	<p id = "info">Defend io is a multiplayer game. Kill opponents and capture castles for guards. Take advantage and hide under trees, or build your own walls for protection. Play Defendio today. </p>
+	<h2>How to play Defendio</h2>
+	<ul>
+	<li>WASD to move</li>
+	<li>Click to shoot</li>
+	<li>E to build a wall</li>
+	</ul>
+	
+</div>
 <?php
 exec("curl 'http://defendws.herokuapp.com/'");
 ?>
