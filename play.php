@@ -46,6 +46,7 @@
 	<div id = "chat">Chat</div>
 	<input onChange="sendMsg(this.value);" id = "chatinput">
 </div>
+<div id = "mobileButtons"></div>
 <canvas id="myCanvas" onclick = "canvas_click()" style="border:1px solid #d3d3d3;"></canvas>
 
 
