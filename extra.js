@@ -27,6 +27,59 @@ function setSize() {
 }
 setSize()
 window.onresize=setSize;
+
+mobileButtons = []
+function onMobileDown(x){
+	event.preventDefault()
+	mobileButtons.push(x)
+}
+function onMobileUp(x){
+	event.preventDefault()
+	mobileButtons = mobileButtons.filter(function(y){
+			return x!=y
+	})
+}
+
+let details = navigator.userAgent;
+
+
+let regexp = /android|iphone|kindle|ipad/i;
+
+let isMobileDevice = regexp.test(details);
+
+if (isMobileDevice) {
+	document.getElementById("mobileButtons").innerHTML += `<style>
+#buttonW{				
+	left: 10%;
+	bottom: 20%;
+}
+#buttonA{				
+	left: 0%;
+	bottom: 10%;
+}
+#buttonS{
+	left: 10%;
+	bottom: 0%;
+}
+#buttonD{
+	left: 20%;
+	bottom: 10%;
+}
+.mobileButton{
+	z-index:100;
+	position: absolute;
+	font-family:consolas;
+	height:10%;
+	width:10%;
+ 	user-select: none;
+}
+</style>
+<button id = "buttonW" class = "mobileButton" ontouchstart = "onMobileDown(this.innerText)" ontouchend = "onMobileUp(this.innerText)">W</button>
+<button id = "buttonA" class = "mobileButton" ontouchstart = "onMobileDown(this.innerText)" ontouchend = "onMobileUp(this.innerText)">A</button>
+<button id = "buttonS" class = "mobileButton" ontouchstart = "onMobileDown(this.innerText)" ontouchend = "onMobileUp(this.innerText)">S</button>
+<button id = "buttonD" class = "mobileButton" ontouchstart = "onMobileDown(this.innerText)" ontouchend = "onMobileUp(this.innerText)">D</button>`
+}
+
 var ctx = c.getContext("2d");
 
 function keypress(event) {
@@ -57,6 +110,7 @@ function playSound(filename){
 	soundeffectAudio = new Audio('/sounds/'+filename);
 	soundeffectAudio.play();
 }
+
 
 
 let interval;
@@ -141,3 +195,4 @@ function shakeScreen(){
     }, 50);
     setTimeout(function(){clearInterval(shake1); clearInterval(shake2); document.getElementById("myCanvas").style.transform="rotateZ(0deg)";}, 200);
 }
+
