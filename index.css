@@ -11,11 +11,13 @@ input{
 	border-color:black;
 	font-family: 'Fredoka', sans-serif;
 	font-size: 20px;
+	border-width: 2px 4px 4px 2px;
 }
 #tips{
 	font-size: 40px;
 	transform: rotateZ(20deg);
 	color: orange;
+	text-shadow: 1px 1px 1px #c2ceff;
 }
 #title{
 	font-size: 80px;
@@ -23,6 +25,7 @@ input{
 	background-color:white;
 	display: inline-block;
 	font-family: 'Fredoka', sans-serif;
+	text-shadow: 5px 1px 2px #c2ceff;
 }
 #img1{
 	left: 5%;
@@ -44,12 +47,16 @@ body{
 }
 #info{
 	font-size: 50px;
+	text-shadow: 1px 1px 1px #c2ceff;
+}
+a{
+	text-shadow: 2px 2px 1px #c2ceff;
 }
 ::-webkit-scrollbar {
   width: 20px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: cyan; 
+  background: orange; 
   border-radius: 10px;
 }
